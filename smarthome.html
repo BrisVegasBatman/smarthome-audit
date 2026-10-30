@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FixItFree | Smart Home & Wi-Fi Diagnostics</title>
-    <!-- Google Fonts for crisp modern typography -->
+    <title>FixItFree | Smart Home & Wi-Fi Audit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,19 +13,12 @@
             --card-bg: rgba(18, 24, 38, 0.85);
             --accent-blue: #3b82f6;
             --accent-glow: #2563eb;
-            --accent-cyan: #06b6d4;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: rgba(255, 255, 255, 0.08);
             --input-bg: #111827;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: var(--bg-dark);
             background-image: 
@@ -37,13 +29,11 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 2rem 1rem;
             line-height: 1.6;
         }
-
         .container {
             width: 100%;
             max-width: 580px;
@@ -51,220 +41,71 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 2.5rem 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
-                        0 0 40px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.08);
             backdrop-filter: blur(12px);
         }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(59, 130, 246, 0.12);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #60a5fa;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 4px 12px;
-            border-radius: 9999px;
-            margin-bottom: 1.25rem;
-        }
-
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #3b82f6;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            color: #ffffff;
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-
-        h1 span {
-            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .step-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            padding: 0.75rem;
-            text-align: center;
-        }
-
-        .step-number {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 2px;
-        }
-
-        .step-text {
-            font-size: 0.75rem;
-            color: #d1d5db;
-            font-weight: 500;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #e5e7eb;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-main);
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: #4b5563;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            background-color: #1f2937;
-        }
-
-        button {
-            width: 100%;
-            padding: 0.9rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            margin-top: 0.5rem;
-        }
-
-        button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-            filter: brightness(1.1);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .footer-note {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-top: 1.5rem;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 1.75rem 1.25rem;
-            }
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-        }
+        .nav-back { display: inline-flex; align-items: center; gap: 6px; color: #60a5fa; text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.25rem; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 9999px; margin-bottom: 1.25rem; }
+        .badge-dot { width: 6px; height: 6px; background-color: #3b82f6; border-radius: 50%; box-shadow: 0 0 8px #3b82f6; }
+        h1 { font-size: 2rem; font-weight: 800; color: #ffffff; margin-bottom: 0.75rem; line-height: 1.2; }
+        h1 span { background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .audit-highlights { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 10px; padding: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; }
+        .audit-highlights ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; color: #d1d5db; }
+        .audit-highlights li::before { content: "✓ "; color: #60a5fa; font-weight: bold; }
+        form { display: flex; flex-direction: column; gap: 1.1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        label { font-size: 0.85rem; font-weight: 600; color: #e5e7eb; }
+        input, select, textarea { width: 100%; padding: 0.75rem 1rem; background-color: var(--input-bg); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-main); font-family: inherit; font-size: 0.95rem; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+        button { width: 100%; padding: 0.9rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow)); color: #ffffff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem; }
+        .footer-note { text-align: center; font-size: 0.75rem; color: #6b7280; margin-top: 1.5rem; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <div class="badge">
-            <span class="badge-dot"></span>
-            100% Free • Remote Smart Home Audit
-        </div>
-
-        <h1>Fix Your Smart Home <span>Without Expensive Fees</span></h1>
-        <p class="subtitle">Wi-Fi dropouts? Offline cameras? Describe your current setup below to receive a custom diagnostic and exact hardware fix straight to your inbox.</p>
-
-        <div class="steps-grid">
-            <div class="step-item">
-                <div class="step-number">01</div>
-                <div class="step-text">Submit Issue</div>
-            </div>
-            <div class="step-item">
-                <div class="step-number">02</div>
-                <div class="step-text">Get Diagnostic</div>
-            </div>
-            <div class="step-item">
-                <div class="step-number">03</div>
-                <div class="step-text">Fix It Fast</div>
-            </div>
+        <a href="index.html" class="nav-back">← Back to Portal</a>
+        <div class="badge"><span class="badge-dot"></span>100% Free • Smart Home & Wi-Fi Audit</div>
+        <h1>Fix Wi-Fi Dead Zones <span>& Smart Home Drops</span></h1>
+        <p class="subtitle">Get an expert diagnostic plan to eliminate router congestion, fix Google Home disconnects, and optimize mesh routing.</p>
+        
+        <div class="audit-highlights">
+            <strong>What We Analyze:</strong>
+            <ul>
+                <li>2.4GHz vs 5GHz Congestion</li>
+                <li>ISP Router Bottlenecks</li>
+                <li>Mesh Node Placement</li>
+                <li>Smart Automation Loops</li>
+            </ul>
         </div>
 
         <form action="https://formspree.io/f/mbggklej" method="POST">
+            <input type="hidden" name="category" value="Smart Home & Wi-Fi">
             <div class="form-group">
                 <label for="name">First Name</label>
                 <input type="text" id="name" name="name" placeholder="e.g., Damien" required>
             </div>
-            
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="name@example.com" required>
             </div>
-            
             <div class="form-group">
-                <label for="issue">Current Setup & Hardware Issues</label>
-                <textarea id="issue" name="issue" rows="4" placeholder="E.g., My Swann cameras keep dropping off Wi-Fi when streaming on TV, or my Google Home hub fails to connect..." required></textarea>
+                <label for="ecosystem">Primary Ecosystem</label>
+                <select id="ecosystem" name="ecosystem" required>
+                    <option value="" disabled selected>Select your main system...</option>
+                    <option value="Google Home / Nest">Google Home / Google Nest</option>
+                    <option value="Amazon Alexa">Amazon Alexa</option>
+                    <option value="Apple HomeKit">Apple HomeKit</option>
+                    <option value="Mixed / Custom Hubs">Mixed / Custom (Home Assistant, SmartThings)</option>
+                </select>
             </div>
-            
-            <button type="submit">Request Free Diagnostic Plan →</button>
+            <div class="form-group">
+                <label for="issue">Describe Your Wi-Fi or Smart Home Problem</label>
+                <textarea id="issue" name="issue" rows="4" placeholder="E.g., Google Nest Hub drops off Wi-Fi during 4K streaming, or rooms at the back of the house have no signal..." required></textarea>
+            </div>
+            <button type="submit">Request Smart Home Diagnostic →</button>
         </form>
-
-        <p class="footer-note">No credit card required. Pure technical advice and gear recommendations.</p>
+        <p class="footer-note">No physical visit required. Personalized network diagnostic plan delivered by email.</p>
     </div>
-
 </body>
 </html>
