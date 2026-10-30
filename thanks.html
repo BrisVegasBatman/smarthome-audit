@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixItFree | Request Received</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0d14;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --accent-blue: #3b82f6;
+            --accent-glow: #2563eb;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 580px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 130, 246, 0.08);
+            backdrop-filter: blur(12px);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .check-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .next-steps-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #e5e7eb;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .next-steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+
+        .next-steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .next-steps-list li::before {
+            content: "✓";
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .btn-home {
+            display: inline-block;
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Request Received
+        </div>
+
+        <div class="check-icon">⚡</div>
+        <h1>Diagnostic Plan <span>In Progress!</span></h1>
+        <p class="subtitle">Thank you for submitting your setup details. Your request has been logged and is currently under review.</p>
+
+        <div class="next-steps">
+            <div class="next-steps-title">What Happens Next:</div>
+            <ul class="next-steps-list">
+                <li>We analyze your specific hardware and network bottlenecks.</li>
+                <li>A step-by-step diagnostic guide will be generated.</li>
+                <li>Your customized fix and hardware links will arrive in your email.</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="btn-home">← Return to FixItFree Portal</a>
+
+        <p class="footer-note">FixItFree.com.au • Remote Technical Support</p>
+    </div>
+
+</body>
+</html>
