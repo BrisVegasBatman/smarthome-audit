@@ -3,70 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Smart Home Audit</title>
+    <title>FixItFree | Smart Home & Wi-Fi Diagnostics</title>
+    <!-- Google Fonts for crisp modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { 
-            background-color: #121212; 
-            color: #e0e0e0; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            padding: 2rem; 
-            display: flex; 
-            justify-content: center; 
+        :root {
+            --bg-dark: #0a0d14;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --accent-blue: #3b82f6;
+            --accent-glow: #2563eb;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --input-bg: #111827;
         }
-        .container { 
-            max-width: 600px; 
-            background: #1e1e1e; 
-            padding: 2rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
-        }
-        h1 { color: #ffffff; font-size: 1.8rem; margin-top: 0; }
-        p { margin-bottom: 1.5rem; line-height: 1.5; color: #b3b3b3; }
-        label { display: block; margin-bottom: 0.3rem; font-weight: 500; }
-        input, textarea { 
-            width: 100%; 
-            padding: 10px; 
-            margin-bottom: 1.2rem; 
-            border: 1px solid #333; 
-            background: #2a2a2a; 
-            color: #fff; 
-            border-radius: 4px; 
+
+        * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        input:focus, textarea:focus { outline: none; border-color: #007bff; }
-        button { 
-            width: 100%; 
-            padding: 12px; 
-            background: #007bff; 
-            color: #fff; 
-            border: none; 
-            border-radius: 4px; 
-            font-size: 1rem;
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: background 0.2s;
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
         }
-        button:hover { background: #0056b3; }
+
+        .container {
+            width: 100%;
+            max-width: 580px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+                        0 0 40px rgba(59, 130, 246, 0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #3b82f6;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 2px;
+        }
+
+        .step-text {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e5e7eb;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #4b5563;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            background-color: #1f2937;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            filter: brightness(1.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.75rem 1.25rem;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Remote Smart Home Audit</h1>
-        <p>Struggling with Wi-Fi dead zones, offline cameras, or broken automation? Drop your current setup details below. I will send you a custom diagnostic and the exact hardware required to fix it permanently.</p>
-        
-        <!-- Formspree Endpoint Integrated Here -->
+        <div class="badge">
+            <span class="badge-dot"></span>
+            100% Free • Remote Smart Home Audit
+        </div>
+
+        <h1>Fix Your Smart Home <span>Without Expensive Fees</span></h1>
+        <p class="subtitle">Wi-Fi dropouts? Offline cameras? Describe your current setup below to receive a custom diagnostic and exact hardware fix straight to your inbox.</p>
+
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <div class="step-text">Submit Issue</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <div class="step-text">Get Diagnostic</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <div class="step-text">Fix It Fast</div>
+            </div>
+        </div>
+
         <form action="https://formspree.io/f/mbggklej" method="POST">
-            <label for="name">First Name</label>
-            <input type="text" id="name" name="name" required>
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g., Damien" required>
+            </div>
             
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
             
-            <label for="issue">Current Setup & Issue</label>
-            <textarea id="issue" name="issue" rows="4" placeholder="E.g., My Swann cameras drop offline, or my Google Home routine is failing..." required></textarea>
+            <div class="form-group">
+                <label for="issue">Current Setup & Hardware Issues</label>
+                <textarea id="issue" name="issue" rows="4" placeholder="E.g., My Swann cameras keep dropping off Wi-Fi when streaming on TV, or my Google Home hub fails to connect..." required></textarea>
+            </div>
             
-            <button type="submit">Request Free Audit</button>
+            <button type="submit">Request Free Diagnostic Plan →</button>
         </form>
+
+        <p class="footer-note">No credit card required. Pure technical advice and gear recommendations.</p>
     </div>
+
 </body>
 </html>
