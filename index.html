@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixItFree | Free Tech & Smart Home Diagnostics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0d14;
+            --card-bg: rgba(18, 24, 38, 0.85);
+            --card-hover: rgba(26, 35, 56, 0.95);
+            --accent-blue: #3b82f6;
+            --accent-glow: #2563eb;
+            --accent-cyan: #06b6d4;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(59, 130, 246, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #3b82f6;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(12px);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            background: var(--card-hover);
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5),
+                        0 0 30px rgba(59, 130, 246, 0.12);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            background: rgba(255, 255, 255, 0.04);
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.75rem;
+            line-height: 1.5;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-top: auto;
+        }
+
+        .card-link span {
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover .card-link span {
+            transform: translateX(4px);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6b7280;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 900px;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            p.subtitle { font-size: 0.95rem; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <header class="header">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                FixItFree.com.au Portal
+            </div>
+            <h1>What Needs Fixing <span>Today?</span></h1>
+            <p class="subtitle">Select a category below to request a 100% free remote diagnostic plan and exact hardware troubleshooting steps.</p>
+        </header>
+
+        <div class="services-grid">
+            <!-- Smart Home Card -->
+            <a href="smarthome.html" class="service-card">
+                <div>
+                    <div class="card-icon">📡</div>
+                    <h2 class="card-title">Smart Home & Wi-Fi</h2>
+                    <p class="card-desc">Resolve camera disconnects, Wi-Fi dead zones, mesh routing issues, or broken Google Home routines.</p>
+                </div>
+                <div class="card-link">Start Free Audit <span>→</span></div>
+            </a>
+
+            <!-- PC & Audio Tuning Card -->
+            <a href="smarthome.html" class="service-card">
+                <div>
+                    <div class="card-icon">🖥️</div>
+                    <h2 class="card-title">PC & Audio Diagnostics</h2>
+                    <p class="card-desc">Troubleshoot Windows performance bottlenecks, channel audio routing (Equalizer APO), or system hardware.</p>
+                </div>
+                <div class="card-link">Request PC Audit <span>→</span></div>
+            </a>
+
+            <!-- General Hardware & Security Card -->
+            <a href="smarthome.html" class="service-card">
+                <div>
+                    <div class="card-icon">🛡️</div>
+                    <h2 class="card-title">Security & Networks</h2>
+                    <p class="card-desc">Optimize Swann cameras, flood monitoring sensors, unmanaged switches, and local network setups.</p>
+                </div>
+                <div class="card-link">Get Network Audit <span>→</span></div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 FixItFree.com.au • Remote Technical Support & Hardware Diagnostics</p>
+    </footer>
+
+</body>
+</html>
